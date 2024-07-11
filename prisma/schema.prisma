@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Shopify_product {
+  id                          Int      @id @default(autoincrement())
+  shop_name                   String   @unique
+  createdAt                   String[]
+  counts                    String[]
+}
+
+
+
+
+
+
+
+
+model Users {
+  id                          Int      @id @default(autoincrement())
+  name                        String?
+  email                       String   @unique
+  avatar                      String?
+  phoneNumber                 String?
+  streetAddress               String?
+  city                        String?
+  postalZipCode               String?
+  stateProvRegion             String?
+  country                     String?
+  friendlyBusinessName        String?
+  legalBusinessName           String?
+  businessEmail               String?
+  businessPhone               String?
+  businessWebsite             String?
+  businessRegistrationNumber  String?
+  enableCampaigns             Boolean  @default(false)
+  enableTriggers              Boolean  @default(false)
+  enableMissedCallTextBack    Boolean  @default(false)
+  region                      String?
+  myBusinessIsNotRegistration Boolean  @default(false)
+  type                        Int?     @default(0)
+  password                    String?
+  sid                         String?
+  company                     String?
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+}
+
+model NumberPools {
+  id               Int        @id @default(autoincrement())
+  forwardingNumber String
+  poolSize         Int
+  swapTarget       String
+  frindlyName      String
+  timeout          Int        @default(30)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  numbers          Numbers[]
+  visitors         Visitors[]
+}
+
+model Numbers {
+  id             Int         @id @default(autoincrement())
+  poolId         Int
+  phoneNumber    String
+  frindlyName    String
+  assigned       Boolean     @default(false)
+  lastAssignedAt DateTime?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  numberPool     NumberPools @relation(fields: [poolId], references: [id])
+}
+
+model Visitors {
+  id          Int         @id @default(autoincrement())
+  poolId      Int
+  cookie      String
+  phoneNumber String
+  source      String?
+  medium      String?
+  visitedAt   DateTime    @default(now())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  numberPool  NumberPools @relation(fields: [poolId], references: [id])
+}
+
+model Conversion {
+  id                 Int      @id @default(autoincrement())
+  callSid            String
+  conversionAction   String
+  conversionDateTime DateTime @default(now())
+  conversionValue    Float
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
