@@ -13,11 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/public', express.static(path.join(__dirname, '../public')));
-app.use('/api/twilio', routes.twilio);
-app.use('/api/users', routes.users);
-app.use('/api/auth', routes.auth);
-app.use('/api/track', routes.track);
-app.use('/api/pool', routes.pool);
+//app.use('/api/twilio', routes.twilio);
+// app.use('/api/users', routes.users);
+//app.use('/api/auth', routes.auth);
+//app.use('/api/track', routes.track);
+// app.use('/api/pool', routes.pool);
 app.use('/api/shopify', routes.shopify);
 
 app.use(express.static(path.join(__dirname, '../public/dist')));

@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
-const twilio = require('twilio');
+
 const prisma = new PrismaClient();
 import nodemailer from 'nodemailer';
 import { fetchProducts, fetchOrders } from '../service/shopify.service';
