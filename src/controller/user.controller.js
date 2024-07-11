@@ -1,14 +1,10 @@
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
-const twilio = require('twilio');
 const prisma = new PrismaClient();
-import nodemailer from 'nodemailer';
-const mailgun = require('mailgun-js')
-    ({ apiKey: process.env.EMAIL_API_KEY, domain: process.env.EMAIL_DOMAIN });
 
 // Initialize the Twilio client
-const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+//const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const JWT_SECRET = process.env.JWT_SECRET; // You should store your secret in an environment variable
 // Get list of all users
