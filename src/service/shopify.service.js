@@ -34,4 +34,34 @@ export const fetchOrders = async (shopName, accessToken) => {
   }
 };
 
+export const fetchOrders = async (shopName, accessToken) => {
+  const shopifyBaseUrl = `https://${shopName}.myshopify.com/admin/api/2023-01`;
 
+  try {
+    const response = await axios.get(`${shopifyBaseUrl}/orders.json`, {
+      headers: {
+        'X-Shopify-Access-Token': accessToken
+      }
+    });
+    return response.data.orders;
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    throw err;
+  }
+};
+
+export const fetchOrders = async (shopName, accessToken) => {
+  const shopifyBaseUrl = `https://${shopName}.myshopify.com/admin/api/2023-01`;
+
+  try {
+    const response = await axios.get(`${shopifyBaseUrl}/orders.json`, {
+      headers: {
+        'X-Shopify-Access-Token': accessToken
+      }
+    });
+    return response.data.orders;
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    throw err;
+  }
+};
