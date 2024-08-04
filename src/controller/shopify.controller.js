@@ -4,7 +4,7 @@ import { fetchProducts, fetchOrders } from '../service/shopify.service';
 
 // Get getProductData from api
 export const getProductData = async (req, res) => {
-  const { shopName, accessToken } = req.body;
+  const { shopName, accessToken, type } = req.body;
   if (!shopName || !accessToken) {
     return res.status(400).json({ error: 'Missing shopName or accessToken' });
   }
@@ -66,7 +66,8 @@ export const getProductData = async (req, res) => {
 
   const jsonResponse = {
     date: dates,
-    count: resultArray
+    count: resultArray,
+    type: type
   };
   res.json(jsonResponse);
   } catch (err) {

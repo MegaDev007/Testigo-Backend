@@ -4,7 +4,7 @@ const router = Router();
 const Controller = require('../controller/shopify.controller');
 const { getProductData } = Controller;
 
-router.get('/', getProductData);
+router.post('/', getProductData);
 // router.get('/profile', getProfile);
 // router.post('/', create);
 // router.get('/:id', getOne);
